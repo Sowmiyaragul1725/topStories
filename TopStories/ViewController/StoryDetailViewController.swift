@@ -28,12 +28,20 @@ class StoryDetailViewController : UIViewController {
         setStoryDetail()
     }
     
+    //MARK: Injection
+    static func create(storyDetail: Stories) -> StoryDetailViewController {
+        let viewController: StoryDetailViewController = StoryDetailViewController.init(nibName: "\(StoryDetailViewController.self)", bundle: nil)
+        viewController.storyDetail = storyDetail
+        return viewController
+    }
+    
     //MARK: UISetUp
     func setCornerRadius() {
         storiesImageView?.layer.cornerRadius = 10.0
     }
 }
 
+//MARK: SetStoryDetails
 extension StoryDetailViewController {
     func setStoryDetail() {
         titleLabel?.text = storyDetail?.title ?? ""

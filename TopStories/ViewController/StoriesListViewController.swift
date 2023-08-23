@@ -13,13 +13,12 @@ class StoriesListViewController: UIViewController {
     
     //MARK: Local Variable
     var storiesViewModel: StoriesViewModel?
-    var storyModel: StoriesModel?
+    var stories: [Stories]? = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        let storyModel = StoriesModel()
-        storiesViewModel = StoriesViewModel(story: storyModel)
+        storiesViewModel = StoriesViewModel()
         registerTableViewCell()
     }
     
@@ -27,7 +26,6 @@ class StoriesListViewController: UIViewController {
         super.viewWillAppear(animated)
         loadStories()
     }
-    
     
     //MARK: RegisterCell
     func registerTableViewCell() {
@@ -42,11 +40,11 @@ class StoriesListViewController: UIViewController {
 //MARK: API Call
 extension StoriesListViewController {
     func loadStories() {
-        storiesViewModel?.getStoriesList(completion: { [weak self] stories, error in
+            storiesViewModel?.loadStoriesList(completion: { [weak self] stories, error in
             guard error == nil else {
                 return
             }
-            self?.storyModel = stories
+                self?.stories = stories?.results
             DispatchQueue.main.async {
                 self?.storiesListTableView?.reloadData()
             }
@@ -57,9 +55,9 @@ extension StoriesListViewController {
 //MARK: Navigation
 extension StoriesListViewController {
     func navigateToStoryDetailPage(storyDetail: Stories?) {
-        if let storyDetailVC = StoryDetailViewController.init(nibName: "\(StoryDetailViewController.self)", bundle: nil) as? StoryDetailViewController {
-            storyDetailVC.storyDetail = storyDetail
-            self.navigationController?.pushViewController(storyDetailVC, animated: true)
+        if let detail = storyDetail {
+            let storyViewController = StoryDetailViewController.create(storyDetail: detail)
+            self.navigationController?.pushViewController(storyViewController, animated: true)
         }
     }
 }
@@ -67,12 +65,12 @@ extension StoriesListViewController {
 //MARK: TableView Cell
 extension StoriesListViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return storyModel?.results?.count ?? 0
+        return stories?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: Constants.storiesTableViewCell, for: indexPath) as? StoriesTableViewCell {
-            if let detail = self.storyModel?.results?[indexPath.row] {
+            if let detail = self.stories?[indexPath.row] {
                 cell.setStoriesDetail(storiesDetail: detail)
                 cell.selectionStyle = .none
                 return cell
@@ -86,9 +84,8 @@ extension StoriesListViewController : UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let storyDetail = storyModel?.results?[indexPath.row] {
+        if let storyDetail = stories?[indexPath.row] {
             navigateToStoryDetailPage(storyDetail: storyDetail)
         }
     }
 }
-

@@ -6,18 +6,17 @@
 //
 
 import Foundation
-struct StoriesModel: Codable {
-    var results : [Stories]?
+class StoryListModel: Codable {
+    var results: [Stories]?
     
-    func parseJson(jsonData : Data) -> StoriesModel? {
+    func parseJson(jsonData : Data) -> StoryListModel? {
         let decoder = JSONDecoder()
         do {
-            let dataToModel = try decoder.decode(StoriesModel.self, from: jsonData)
+            let dataToModel = try decoder.decode(StoryListModel.self, from: jsonData)
             return dataToModel
         } catch {
             print(error.localizedDescription)
         }
         return nil
     }
-    
 }
