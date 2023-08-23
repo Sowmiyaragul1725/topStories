@@ -14,10 +14,6 @@ class StoriesViewModel {
         self.story = story
     }
     
-    var results : [Stories] {
-        return story.results ?? []
-    }
-    
     func getStoriesList(completion: @escaping (StoriesModel?,Error?) -> Void) {
     let url = URL(string: storiesListUrl)
         if let url = url {
