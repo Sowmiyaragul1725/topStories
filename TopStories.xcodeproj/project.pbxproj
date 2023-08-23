@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A00172472A95DBF70085FFC7 /* StoriesViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00172462A95DBF70085FFC7 /* StoriesViewModelTests.swift */; };
+		A00172492A95DC410085FFC7 /* MockAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00172482A95DC410085FFC7 /* MockAPITests.swift */; };
 		A05718882A9595DD006AB401 /* StoriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EF02ED2A94D8520092CF3E /* StoriesViewModel.swift */; };
 		A05718892A9595E0006AB401 /* StoriesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EF02BF2A94CEEA0092CF3E /* StoriesListViewController.swift */; };
 		A057188A2A9595E3006AB401 /* StoryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EF03042A9521C90092CF3E /* StoryDetailViewController.swift */; };
@@ -61,6 +63,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A00172462A95DBF70085FFC7 /* StoriesViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesViewModelTests.swift; sourceTree = "<group>"; };
+		A00172482A95DC410085FFC7 /* MockAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAPITests.swift; sourceTree = "<group>"; };
 		A057189C2A95CDD6006AB401 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		A0EF02B82A94CEEA0092CF3E /* TopStories.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TopStories.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0EF02BB2A94CEEA0092CF3E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -166,6 +170,8 @@
 			isa = PBXGroup;
 			children = (
 				A0EF02D22A94CEEB0092CF3E /* TopStoriesTests.swift */,
+				A00172462A95DBF70085FFC7 /* StoriesViewModelTests.swift */,
+				A00172482A95DC410085FFC7 /* MockAPITests.swift */,
 			);
 			path = TopStoriesTests;
 			sourceTree = "<group>";
@@ -402,9 +408,11 @@
 				A057188A2A9595E3006AB401 /* StoryDetailViewController.swift in Sources */,
 				A057189E2A95CDE4006AB401 /* APIManager.swift in Sources */,
 				A057188B2A9595E8006AB401 /* StoriesTableViewCell.swift in Sources */,
+				A00172472A95DBF70085FFC7 /* StoriesViewModelTests.swift in Sources */,
 				A05718882A9595DD006AB401 /* StoriesViewModel.swift in Sources */,
 				A0EF02D32A94CEEB0092CF3E /* TopStoriesTests.swift in Sources */,
 				A05718922A959760006AB401 /* Multimedia.swift in Sources */,
+				A00172492A95DC410085FFC7 /* MockAPITests.swift in Sources */,
 				A05718902A95970C006AB401 /* Stories.swift in Sources */,
 				A05718912A95974E006AB401 /* Constants.swift in Sources */,
 			);

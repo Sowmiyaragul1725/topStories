@@ -9,11 +9,9 @@ import XCTest
 @testable import TopStories
 
 final class TopStoriesTests: XCTestCase {
-    var storyModel: StoryListModel?
     var viewModel: StoriesViewModel?
     
     override func setUp() {
-        storyModel = StoryListModel()
         viewModel = StoriesViewModel(apiManager: APIManager())
     }
     
@@ -38,7 +36,6 @@ final class TopStoriesTests: XCTestCase {
     }
 
     override func tearDown() {
-        storyModel =  nil
         viewModel = nil
     }
 }
