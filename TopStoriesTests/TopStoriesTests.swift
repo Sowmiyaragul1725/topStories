@@ -9,16 +9,16 @@ import XCTest
 @testable import TopStories
 
 final class TopStoriesTests: XCTestCase {
-    var storyModel: StoriesModel?
+    var storyModel: StoryListModel?
     var viewModel: StoriesViewModel?
     
     override func setUp() {
-        storyModel = StoriesModel()
-        viewModel = StoriesViewModel(story: storyModel ?? StoriesModel())
+        storyModel = StoryListModel()
+        viewModel = StoriesViewModel(apiManager: APIManager())
     }
     
     func testEmptyListOfStories() {
-        XCTAssertFalse(viewModel?.story.results?.count == 0)
+        XCTAssertFalse(viewModel?.apiManager?.stories.results?.count == 0)
     }
     
     func testApiWithNonEmptyUrl() {

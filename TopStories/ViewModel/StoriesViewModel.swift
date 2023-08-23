@@ -8,9 +8,13 @@
 import Foundation
 
 class StoriesViewModel {
-    var apiManager = APIManager()
+    var apiManager: APIManager?
+    
+    init(apiManager: APIManager) {
+        self.apiManager = apiManager
+    }
     
     func loadStoriesList(completion: @escaping (StoryListModel?,Error?) -> Void) {
-        apiManager.getStoriesList(completion: completion)
+        apiManager?.getStoriesList(completion: completion)
     }
 }
